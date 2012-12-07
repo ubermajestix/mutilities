@@ -1,1 +1,1 @@
-run Rack::File.new("./")
+run Rack::Directory.new(".")
