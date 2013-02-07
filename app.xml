@@ -31,8 +31,8 @@
 <div class="hangout"> </div>
 
 <script type="text/javascript" charset="utf-8">
-  var local = true
-  server = local ? "//0.0.0.0:9292" : "//mute-hangout.herokuapp.com"
+  var local = true;
+  server = local ? "//0.0.0.0:9292" : "//mute-hangout.herokuapp.com";
   $.ajax({
     url: server + '/layout.html', 
     dataType: 'jsonp',
