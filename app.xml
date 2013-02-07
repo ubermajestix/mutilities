@@ -37,7 +37,7 @@
     url: server + '/layout.html', 
     dataType: 'jsonp',
     success: function(res){
-      $('div.hangout').html(res);
+      $('div.hangout').html(res.html);
     }
   });
 </script>
