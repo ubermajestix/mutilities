@@ -22,7 +22,7 @@
 <!DOCTYPE html>
 <!-- The hangout API JavaScript. Always include this first -->
 <script src="//hangoutsapi.talkgadget.google.com/hangouts/api/hangout.js?v=1.2"></script>
-<script src="http://0.0.0.0:9292/app.js"></script>
+<script src="//0.0.0.0:9292/app.js"></script>
 <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" rel="stylesheet">
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <h1>._.</h1>
