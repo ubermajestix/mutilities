@@ -6,10 +6,13 @@ function init() {
       console.log('API is ready');
       console.log(gapi.hangout);
       console.log(gapi.hangout.getParticipants());
-      gapi.hangout.av.setParticipantAudible(
-        participantId,
-        false
-      );
+      $('button.mute').click(function(){
+        var participants = gapi.hangout.getParticipants();
+        _.each(participants, function(participant){
+          console.log(participant);
+          gapi.hangout.av.muteParticipantMicrophone(participant.id);
+        });
+      });
     }
   };
 

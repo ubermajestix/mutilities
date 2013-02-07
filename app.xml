@@ -27,6 +27,6 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js "></script>
 <h1>._.</h1>
-<button class="btn btn-danger">mute everyone</button>
+<button class="mute btn btn-danger">mute everyone</button>
 ]]></Content>
 </Module>
