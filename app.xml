@@ -22,40 +22,10 @@
 <!DOCTYPE html>
 <!-- The hangout API JavaScript. Always include this first -->
 <script src="//hangoutsapi.talkgadget.google.com/hangouts/api/hangout.js?v=1.2"></script>
-
-<!-- The JavaScript for this app. This must always be a full URL not a
-     relative path.
-     Tip: You can load it from a local web server such as
-     http://localhost/app.js for faster single user development
-     BUT! It will cause insecure content warnings -->
+<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" rel="stylesheet">
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="http://0.0.0.0:9292/app.js"></script>
-
-<h1><img src="http://0.0.0.0:9292/hangouts-logo.png" 
-    alt="Google+ Hangouts Logo" height="50" width="50">Starter App</h1>
-<div style="float: left; padding: 0px 20px; border-right: 1px solid #EEE">
-  <p>Collaborate with your friends to count to a big number!</p>
-  <dl>
-    <dt>Current count:</dt>
-    <dd id="count"></dd>
-    <dt>Player count:</dt>
-    <dd id="participants"></dd>
-  </dl>
-
-  <input type=button value="Click Me!" id="countButton"
-      onClick="countButtonClick()"/>
-  <input type=button value="Reset" id="resetButton"
-      onClick="resetButtonClick()"/>
-</div>
-<div style="float: left; padding: 0px 20px">
-  <p>Fetch some JSON from main.py</p>
-  <dl>
-    <dt>Message:</dt>
-    <dd id="message"></dd>
-  </dl>
-  <input type=button value="Get Message" id="getMessageButton"
-      onClick="getMessageClick()"/>
-</div>
-<div style="clear: both;"></div>
-
+<h1>._.</h1>
+<button class="btn btn-danger">mute everyone</button>
 ]]></Content>
 </Module>
