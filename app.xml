@@ -25,9 +25,17 @@
 <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" rel="stylesheet">
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js "></script>
-<script src="//mute-hangout.herokuapp.com/app.js"></script>
-<!--<script src="//0.0.0.0:9292/app.js"></script>-->
-<h1>._.</h1>
-<button class="mute btn btn-danger">mute everyone</button>
+<!--<script src="//mute-hangout.herokuapp.com/app.js"></script>-->
+<script src="//0.0.0.0:9292/app.js"></script>
+
+<div class="hangout"> </div>
+
+<script type="text/javascript" charset="utf-8">
+  var local = true
+  server = local ? "//0.0.0.0:9292" : "//mute-hangout.herokuapp.com"
+  $.get(server + '/layout.html', function(res){
+    $('div.hangout').html(res);
+  };)
+</script>
 ]]></Content>
 </Module>

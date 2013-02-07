@@ -13,6 +13,7 @@ function init() {
           gapi.hangout.av.muteParticipantMicrophone(participant.id);
         });
       });
+      
     }
   };
 
