@@ -104,5 +104,5 @@ function init() {
   // event if you would like to any more complex app setup.
   gapi.hangout.onApiReady.add(apiReady);
 }
-
+console.log('its alive!')
 gadgets.util.registerOnLoadHandler(init);
