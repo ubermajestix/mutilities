@@ -33,8 +33,12 @@
 <script type="text/javascript" charset="utf-8">
   var local = true
   server = local ? "//0.0.0.0:9292" : "//mute-hangout.herokuapp.com"
-  $.get(server + '/layout.html', function(res){
-    $('div.hangout').html(res);
+  $.ajax({
+    url: server + '/layout.html', 
+    dataType: 'jsonp',
+    success: function(res){
+      $('div.hangout').html(res);
+    }
   });
 </script>
 ]]></Content>
