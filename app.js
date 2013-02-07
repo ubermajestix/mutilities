@@ -6,6 +6,7 @@ function init() {
       console.log('API is ready');
       console.log(gapi.hangout);
       console.log(gapi.hangout.getParticipants());
+      var me = gapi.hangout.getLocalParticipant();
       $('button.mute').click(function(){
         var participants = gapi.hangout.getParticipants();
         _.each(participants, function(participant){
@@ -13,7 +14,23 @@ function init() {
           gapi.hangout.av.muteParticipantMicrophone(participant.id);
         });
       });
-      
+      var push_to_talk = true;
+      $('input[name="push_to_talk"]').change(function(){
+         if($(this).val()=='mute'){
+           push_to_talk = false;
+           $('button.push_to_talk').text('push to mute');
+         }
+         else{
+           push_to_talk = true;
+           $('button.push_to_talk').text('push to talk');
+         }
+      });
+      $('button.push_to_talk').mousedown(function(){
+        me.setMicrophoneMute(!push_to_talk);
+      });
+      $('button.push_to_talk').mouseup(function(){
+        me.setMicrophoneMute(push_to_talk);
+      });
     }
   };
 

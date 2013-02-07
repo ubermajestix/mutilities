@@ -35,7 +35,7 @@
   server = local ? "//0.0.0.0:9292" : "//mute-hangout.herokuapp.com"
   $.get(server + '/layout.html', function(res){
     $('div.hangout').html(res);
-  };)
+  });
 </script>
 ]]></Content>
 </Module>
