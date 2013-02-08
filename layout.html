@@ -1,8 +1,12 @@
 <h1>._.</h1>
-<button class="mute btn btn-danger">mute everyone</button>
+<button class="mute btn btn-danger">mute everyone</button><br />
+
 <button class="push_to_talk btn">push to talk</button>
-<p>
-  <input type="radio" value="talk" name="push_to_talk" checked> push to talk</br>
-  <input type="radio" value="mute" name="push_to_talk"> push to mute
-</p>
+<div class="btn-group">
+  <button class="btn btn-mini dropdown-toggle" data-toggle="dropdown">change<span class="caret"></span></button>
+  <ul class="dropdown-menu">
+    <li><a href="#" class='push_to_talk'>push to talk</a></li>
+    <li><a href="#" class='push_to_mute'>push to mute</a></li>
+  </ul>
+</div>
 
