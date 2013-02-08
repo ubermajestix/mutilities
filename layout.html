@@ -1,12 +1,15 @@
-<h1>._.</h1>
-<button class="mute btn btn-danger">mute everyone</button><br />
-
-<button class="push_to_talk btn">push to talk</button>
+<style>
+  h1{margin-bottom: 16px}
+  button.mute{margin-top: 8px; display: block;}
+  i{margin-right: 4px}
+</style>
+<h1>._. mutilities</h1>
+<button class="push_to_talk btn"><i class="icon-ban-circle"></i>push to mute</button>
 <div class="btn-group">
-  <button class="btn btn-mini dropdown-toggle" data-toggle="dropdown">change<span class="caret"></span></button>
+  <button class="btn btn-mini dropdown-toggle change" data-toggle="dropdown"><i class="icon-cog"></i><span class="caret"></span></button>
   <ul class="dropdown-menu">
     <li><a href="#" class='push_to_talk'>push to talk</a></li>
     <li><a href="#" class='push_to_mute'>push to mute</a></li>
   </ul>
 </div>
-
+<button class="mute btn btn-danger">mute everyone</button>

@@ -26,13 +26,13 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js "></script>
 <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js"></script>
-<!--<script src="//mute-hangout.herokuapp.com/app.js"></script>-->
-<script src="//0.0.0.0:9292/app.js"></script>
+<script src="//mute-hangout.herokuapp.com/app.js"></script>
+<!--<script src="//0.0.0.0:9292/app.js"></script>-->
 
 <div class="hangout"> </div>
 
 <script type="text/javascript" charset="utf-8">
-  var local = true;
+  var local = false;
   server = local ? "//0.0.0.0:9292" : "//mute-hangout.herokuapp.com";
   $.ajax({
     url: server + '/layout.html', 
