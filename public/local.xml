@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Module>
+  <ModulePrefs title="mutilities">
+    <Require feature="rpc"/>
+  </ModulePrefs>
+  <Content type="html">
+    <![CDATA[
+      <!DOCTYPE html>
+      <!-- The hangout API JavaScript. Always include this first -->
+      <head>
+        <script src="//hangoutsapi.talkgadget.google.com/hangouts/api/hangout.js?v=1.3"></script>
+        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" rel="stylesheet">
+      </head>
+      <body>
+      <div class="hangout"></div>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"></script>
+      <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js"></script>
+      <script src="//0.0.0.0:9292/app.js"></script>
+      <script type="text/javascript" charset="utf-8">
+        var url = "//0.0.0.0:9292/layout";
+        $.ajax({
+          url: url, 
+          dataType: 'jsonp',
+          success: function(res){
+            $('div.hangout').html(res.html);
+          }
+        });
+      </script>
+      </body>
+      </html>
+    ]]>
+  </Content>
+</Module>
