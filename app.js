@@ -37,19 +37,19 @@ Mute.prototype = {
     });
     $('button.push_to_talk').mousedown(function(){
       if(push_to_talk){
-        $(this).removeClass('btn-danger')
+        $(this).removeClass('btn-danger');
       }
       else{
-        $(this).addClass('btn-danger')
+        $(this).addClass('btn-danger');
       }
       gapi.hangout.av.setMicrophoneMute(!push_to_talk);
     });
     $('button.push_to_talk').mouseup(function(){
       if(push_to_talk){
-        $(this).addClass('btn-danger')
+        $(this).addClass('btn-danger');
       }
       else{
-        $(this).removeClass('btn-danger')
+        $(this).removeClass('btn-danger');
       }
       gapi.hangout.av.setMicrophoneMute(push_to_talk);
     });
