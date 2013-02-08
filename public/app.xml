@@ -35,7 +35,7 @@
   var local = false;
   server = local ? "//0.0.0.0:9292" : "//mute-hangout.herokuapp.com";
   $.ajax({
-    url: server + '/layout.html', 
+    url: server + '/layout', 
     dataType: 'jsonp',
     success: function(res){
       console.log(res);

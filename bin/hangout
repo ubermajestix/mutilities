@@ -1,0 +1,1 @@
+thin -C config/thin.conf -R config.ru start
