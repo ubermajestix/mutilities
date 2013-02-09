@@ -1,4 +1,5 @@
 require 'rack/contrib/jsonp'
+require 'rack/ssl'
 require 'json'
 
 class Hangout
@@ -16,6 +17,7 @@ class Hangout
   end
 end
 
+use Rack::SSL
 use Rack::JSONP
 use Hangout
 run Rack::Directory.new("./public/")
