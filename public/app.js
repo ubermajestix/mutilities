@@ -1,5 +1,5 @@
-var Hangout = {
-  me: gapi.hangout.getLocalParticipant(),
+Hangout = {
+  me: function(){gapi.hangout.getLocalParticipant();},
   participants: function(){ return gapi.hangout.getParticipants();},
   mute: function(participant){
     if(_.isEmpty(arguments)){
@@ -12,7 +12,7 @@ var Hangout = {
   }
 };
 
-var Mute = {
+Mute = {
   init: function(){
     console.log('init');
     Mute.push_to_talk_state = false;
