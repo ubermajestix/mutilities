@@ -4,17 +4,22 @@ Hangout = {
   mute: function(participant){
     if(_.isEmpty(arguments)){
       participant = Hangout.me();
+      Hangout.muted = true;
     }
     gapi.hangout.av.muteParticipantMicrophone(participant.id);
   },
   talk: function(){
+    Hangout.muted = false;
     gapi.hangout.av.setMicrophoneMute(false);
+  },
+  get_my_mute_state: function(){
+    return gapi.hangout.av.getMicrophoneMute();
   }
 };
 
 Mute = {
   init: function(){
-    Mute.push_to_talk_state = false;
+    Hangout.muted = Hangout.get_my_mute_state();
     Mute.bind_mute_everyone();
     Mute.bind_push_to_talk();
   },
@@ -31,7 +36,7 @@ Mute = {
 
   mute_everyone: function(){
     _.each(Hangout.participants(), function(participant){
-      if(participant != Mute.me){
+      if( participant != Hangout.me() ){
         Hangout.mute(participant);
       }
     });
@@ -56,40 +61,28 @@ Mute = {
         Mute.pressed = false;
         Mute.push_to_talk();
         $('button.push_to_talk').toggleClass('btn-danger');
+
       }
     });
   },
 
   push_to_talk: function(){
-    if(Mute.push_to_talk_state){
+    if(Hangout.muted){
       Hangout.talk();
     }
     else{
       Hangout.mute();
     }
-    Mute.push_to_talk_state = !Mute.push_to_talk_state;
-  },
-
-  push_to_mute: function(){
-    if(Mute.push_to_talk_state){
-      Hangout.mute();
-    }
-    else{
-      Hangout.talk();
-    }
-    Mute.push_to_talk_state = !Mute.push_to_talk_state;
   },
 
   bind_settings_dropdown: function(){
     $('a.push_to_mute').hide();
     $('a.push_to_talk').click(function(){
-      Mute.push_to_talk_state = true;
       Hangout.mute();
       $('a.push_to_talk, a.push_to_mute').toggle();
       $('button.push_to_talk').html(Mute.icon('bullhorn') + 'push to talk').addClass('btn-danger');
     });
     $('a.push_to_mute').click(function(){
-      Mute.push_to_talk_state = false;
       Hangout.talk();
       $('a.push_to_talk, a.push_to_mute').toggle();
       $('button.push_to_talk').html(Mute.icon('ban-circle') + 'push to mute').removeClass('btn-danger');
