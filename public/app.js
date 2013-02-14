@@ -6,11 +6,23 @@ Hangout = {
     gapi.hangout.av.onMicrophoneMute.add(Hangout.mute_callback);
     //var throttled_follow_face = _.throttle(Hangout.follow_face, 200);
     //gapi.hangout.av.effects.onFaceTrackingDataChanged.add(throttled_follow_face);
+    gapi.hangout.av.onVolumesChanged.add(Hangout.volume_callback);
   },
 
   me: function(){ return gapi.hangout.getLocalParticipant();},
   
-  participants: function(){ return gapi.hangout.getParticipants();},
+  participants: function(){ 
+    var participants = gapi.hangout.getParticipants();
+    if(!_.isEmpty(arguments)){
+      var ids = arguments;
+      console.log(ids);
+      participants = _.select(participants, function(participant){
+        console.log(participant.id);
+        return _.include(ids, participant.id);
+      });
+    }
+    return participants;
+  },
   
   mute: function(participant){
     if(_.isEmpty(arguments)){
@@ -36,7 +48,39 @@ Hangout = {
       }
     });
   },
-
+  average_volume: function(){
+    var sum = _.reduce(Hangout.volume_events, function(memo, num){ return memo + num; }, 0);
+    return sum / Hangout.volume_events.length;
+  },
+  volume_events: [],
+  volume_callback: function(event){
+    var volumes = _.pairs(event.volumes);
+    // TODO does this provide data for all participants, or once per
+    // volume event per participant?
+    // Also, only blink the overlay when they are muted
+    console.log(volumes); 
+    var volume = volumes[0][1];
+    if(volume >=2 ){
+    Hangout.volume_events.push(volume);
+    }
+    var l = Hangout.volume_events.length;
+    var num_elements = 10;
+    Hangout.volume_events = Hangout.volume_events.splice(l-num_elements,num_elements); 
+    
+    //console.log(volumes[0][1], Hangout.average_volume(), Hangout.average_volume() + 1);
+    if(volumes[0][1] >= Hangout.average_volume()+1){
+      //Hangout.blink_overlay();
+    }
+  },
+  blink_overlay: function(){
+    var rate = 200;
+    _.times(3, function(n){
+      _.delay(function(){
+        Hangout.mute_overlay.setVisible(false);
+        _.delay(function(){Hangout.mute_overlay.setVisible(true);}, rate);
+      }, rate * 2 * n);
+    });
+  },
   mute_callback:  function(event){
     if(event.isMicrophoneMute){
       Hangout.mute_overlay.setVisible(true);
@@ -46,14 +90,14 @@ Hangout = {
     }
   },
   
-  //follow_face: function(data){
-    //if(data.hasFace){
-      //Hangout.mute_overlay.setPosition(data.mouthCenter);
-    //}
-    //else{
-      //Hangout.mute_overlay.setPosition({x:-0.44, y:0.4});
-    //}
-  //},
+  follow_face: function(data){
+    if(data.hasFace){
+      Hangout.mute_overlay.setPosition(data.mouthCenter);
+    }
+    else{
+      Hangout.mute_overlay.setPosition({x:-0.44, y:0.4});
+    }
+  },
 
   push_to_talk: function(){
     if(Hangout.muted){

@@ -1,1 +1,1 @@
-thin -C config/thin.conf -R config.ru start
+open https://0.0.0.0:9292/app.js; thin -C config/thin.conf -R config.ru start; 
